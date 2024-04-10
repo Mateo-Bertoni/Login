@@ -44,14 +44,35 @@ public class Program
             return;
         }
 
-        Console.WriteLine("Introduce tu contraseña:");
-        string contrasenia = Console.ReadLine();
-        if (!ContraseniaValida(contrasenia, email))
-        {
-            Console.WriteLine("Contraseña invalida");
-            return;
-        }
+        string opcion2 = "0";
+        string contrasenia="123";
+        while (opcion2 != "S" && opcion2 != "s")
+        { 
+            Console.WriteLine("Introduce tu contraseña:");
+            contrasenia = Console.ReadLine();
+            if (!ContraseniaValida(contrasenia, email))
+            {
+                Console.WriteLine("Contraseña invalida");
+                return;
+            }
 
+            if (contrasenia.Length > 16)
+            {
+                Console.WriteLine("Su contraseña es muy segura");
+            }
+            else if (contrasenia.Length > 10)
+            {
+                Console.WriteLine("Su contraseña es segura");
+            } 
+            else
+            {
+                Console.WriteLine("Su contraseña poco segura");
+            }
+
+            Console.WriteLine("Desea continuar S/N: ");
+            opcion2 = Console.ReadLine();
+        }
+        
         Console.WriteLine("Elige tu rol: (usuario, invitado, administrador)");
         string rol = Console.ReadLine().ToLower();
         if (rol != "usuario" && rol != "invitado" && rol != "administrador")
